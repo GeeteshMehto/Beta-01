@@ -1,3 +1,5 @@
+import re
+
 from django.http import JsonResponse
 from django.shortcuts import render
 from django.views.decorators.csrf import csrf_exempt
@@ -8,6 +10,7 @@ from sklearn.preprocessing import StandardScaler
 import google.generativeai as genai
 import joblib
 import os
+import random
 
 def index(request):
 
@@ -147,10 +150,71 @@ def predict_view(request):
 
     return render(request, 'room.html', {'heating_load': heating_load, 'cooling_load': cooling_load})
 
-def generate(msg):
+
+genai.configure(api_key="AIzaSyDf0yzxpzP50h5FPs0zI72waHoEY7mKvL4")
+
+@csrf_exempt
+def gen(request):
+    user_message = ""
+    bot_response = ""
+
+    if request.method == "POST":
+        user_message = request.POST.get("user_message", "")
+
+        if user_message:
+            try:
+                model = genai.GenerativeModel("gemini-1.5-flash")
+                response = model.generate_content(f"I know you are not expert just tell me genric answer in just 2 to 3 lines and "
+                                                  f"be specific about the answer do not go here and there just say answer nothing else "
+                                                  f"dont be in doubt just say one answer i know that answer maybe be "
+                                                  f"incorrect but just say answer do not say impossible or hard to say just give me one answer "
+                                                  f"the question is by User: {user_message}")
+                bot_response = response.text if response else "I'm sorry, I couldn't understand that."
+
+            except Exception as e:
+                print("Error generating response:", e)
+                bot_response = "There was an error generating a response. Please try again."
+
+    return render(request, "gen.html", {"user_message": user_message, "response": bot_response})
 
 
-    genai.configure(api_key="")
-    model = genai.GenerativeModel("gemini-1.5-flash")
-    response = model.generate_content("Explain how AI works")
-    print(response.text)
+def dashboard(request):
+    # Generate real-time energy consumption data
+    energy_data = {
+        'hostels': random.randint(100, 500),
+        'academic_buildings': random.randint(500, 1500),
+        'research_labs': random.randint(1000, 3000),
+        'common_areas': random.randint(200, 1000),
+    }
+
+    # Simulate renewable energy sources (solar, wind)
+    renewable_data = {
+        'solar': random.randint(100, 400),  # Solar energy (in kWh)
+        'wind': random.randint(50, 200),  # Wind energy (in kWh)
+    }
+
+    # Calculate the total energy consumption
+    total_consumption = sum(energy_data.values())
+
+    # Logic to suggest energy diversion
+    suggestions = []
+    sorted_areas = sorted(energy_data.items(), key=lambda x: x[1])
+
+    low_area, low_value = sorted_areas[0]
+    high_area, high_value = sorted_areas[-1]
+
+    if low_value < high_value:
+        suggested_transfer = high_value - low_value
+        suggestions.append(
+            f"Consider diverting {suggested_transfer} kWh from {low_area} to {high_area} to balance the load.")
+
+    # Convert the energy data to JSON to send to the frontend
+    energy_data_json = json.dumps(energy_data)
+    renewable_data_json = json.dumps(renewable_data)
+
+    return render(request, 'dahsboard.html', {
+        'energy_data_json': energy_data_json,
+        'renewable_data_json': renewable_data_json,
+        'total_consumption': total_consumption,
+        'suggestions': suggestions,
+    })

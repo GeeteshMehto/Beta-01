@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Chatbot with Gemini</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background: linear-gradient(135deg, #72EDF2 10%, #5151E5 100%);
+            color: #333;
+        }
+        .chat-container {
+            background-color: #fff;
+            border-radius: 8px;
+            padding: 20px;
+            width: 80%;
+            max-width: 500px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+        }
+        h2 {
+            font-size: 1.6em;
+            margin-bottom: 15px;
+            text-align: center;
+            color: #5151E5;
+        }
+        .message-box {
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            min-height: 100px;
+            max-height: 300px; /* Fixed height to make the box scrollable */
+            overflow-y: auto; /* Enable vertical scrolling */
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            background: #f9f9f9;
+        }
+        .bot-response, .user-message {
+            margin: 10px 0;
+            font-size: 1em;
+            line-height: 1.4;
+        }
+        .bot-response {
+            color: #5151E5;
+            font-weight: 500;
+        }
+        .user-message {
+            color: #333;
+        }
+        .user-input {
+            display: flex;
+            margin-top: 15px;
+        }
+        input[type="text"] {
+            width: 100%;
+            padding: 12px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+            font-size: 1em;
+            outline: none;
+        }
+        input[type="text"]:focus {
+            border-color: #5151E5;
+        }
+        button {
+            padding: 12px;
+            border-radius: 5px;
+            border: none;
+            background-color: #5151E5;
+            color: #fff;
+            cursor: pointer;
+            margin-left: 10px;
+            font-size: 1em;
+        }
+        button:hover {
+            background-color: #3e3e9e;
+        }
+        .loading-spinner {
+            margin: 10px 0;
+            text-align: center;
+            display: none;
+        }
+        .loading-spinner img {
+            width: 40px;
+            height: 40px;
+        }
+    </style>
+</head>
+<body>
+    <div class="chat-container">
+        <h2>Chat with Photon AI</h2>
+        <div class="message-box">
+            {% if user_message %}
+                <p class="user-message"><strong>You:</strong> {{ user_message }}</p>
+            {% endif %}
+            {% if response %}
+                <div class="bot-response" id="response-content">
+                    <!-- Bot response will be inserted here as HTML -->
+                    {{ response|safe }}
+                </div>
+            {% endif %}
+            <div class="loading-spinner" id="loading-spinner">
+                <img src="https://i.gifer.com/ZZ5H.gif" alt="Loading...">
+            </div>
+        </div>
+        <form class="user-input" method="POST" id="chat-form">
+            {% csrf_token %}
+            <input type="text" name="user_message" placeholder="Type your message here..." required>
+            <button type="submit">Send</button>
+        </form>
+    </div>
+
+    <script>
+        const form = document.getElementById("chat-form");
+        const loadingSpinner = document.getElementById("loading-spinner");
+        const responseContent = document.getElementById("response-content");
+
+        form.addEventListener("submit", function(event) {
+            event.preventDefault();
+            loadingSpinner.style.display = "block"; // Show the spinner
+            const formData = new FormData(form);
+
+            fetch("", {
+                method: "POST",
+                body: formData,
+            })
+            .then(response => response.text())
+            .then(data => {
+                document.body.innerHTML = data; // Replace the body content with the updated response
+                loadingSpinner.style.display = "none"; // Hide spinner after processing
+            })
+            .catch(error => {
+                console.error("Error:", error);
+                loadingSpinner.style.display = "none"; // Hide spinner if there's an error
+            });
+        });
+    </script>
+</body>
+</html>

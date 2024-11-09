@@ -20,9 +20,11 @@ from django.conf.urls.static import static
 from . import views
 
 urlpatterns = [
-    path('', views.index, name='index'),
+    path('', views.dashboard, name='dashboard'),
     path('solarbill/', views.solarbill, name='solarbill'),
     path('calculate-solar', views.calculate_solar, name='calculate_solar'),
     path('predict_view/', views.predict_view, name='predict_view'),
+    path('gen/', views.gen, name='gen'),
+    # path('dashboard/', views.dashboard, name='dashboard'),
 
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Energy Management System - MANIT Bhopal</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        {#body {#}
+        {#    font-family: 'Arial', sans-serif;#}
+        {#    background-color: #f7f7f7;#}
+        {#    color: #333;#}
+        {#    margin: 0;#}
+        {#    padding: 0;#}
+        {#}#}
+
+        header {
+            background-color: #040943;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .card {
+            background-color: white;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .chart-container {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .chart-card {
+            width: 45%;
+            min-width: 300px;
+            max-width: 500px;
+            text-align: center;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .chart-card h3 {
+            margin-bottom: 20px;
+            font-size: 18px;
+            color: #333;
+        }
+
+        .suggestions {
+            background-color: #ffeb3b;
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 20px;
+            font-weight: bold;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        footer {
+            background-color: #333;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+            font-size: 14px;
+        }
+
+        .total-consumption {
+            background-color: #66b3ff;
+            padding: 15px;
+            color: white;
+            font-weight: bold;
+            font-size: 24px;
+            border-radius: 8px;
+            text-align: center;
+            margin: 20px 0;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .high-consumption {
+            background-color: #ff5252;
+        }
+
+        .low-consumption {
+            background-color: #66bb6a;
+        }
+    </style>
+
+
+        <link rel="stylesheet" href="../static/css/bootstrap.min.css">
+        <link rel="stylesheet" href="../static/css/bootstrap-theme.min.css">
+        <link rel="stylesheet" href="../static/css/fontAwesome.css">
+        <link rel="stylesheet" href="../static/css/hero-slider.css">
+        <link rel="stylesheet" href="../static/css/owl-carousel.css">
+        <link rel="stylesheet" href="../static/css/datepicker.css">
+        <link rel="stylesheet" href="../static/css/tooplate-style.css">
+
+        <link href="https://fonts.googleapis.com/css?family=Montserrat:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+
+        <script src="js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
+</head>
+<body>
+
+    <div class="wrap">
+        <header id="header">
+            <div class="container-fluid">
+                <div class="col-md-12">
+                    <button id="primary-nav-button" type="button">Menu</button>
+                    <div class="logo">
+                        <a href="index.html"><img src="img/white-logo.png" alt="Photon"></a>
+                    </div>
+                    <nav id="primary-nav" class="dropdown cf">
+                        <ul class="dropdown menu">
+                            <li class='active'><a href="index.html">Main Features</a></li>
+                            <li><a href="#">Products</a>
+                                <ul class="sub-menu">
+                                    <li><a href="generic-page.html">Latest Products</a></li>
+                                    <li><a href="generic-page.html">New Arrivals</a></li>
+                                    <li><a href="generic-page.html">Top Rated 2019</a></li>
+                                    <li><a href="generic-page.html">Recommended</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="generic-page.html">Shop</a></li>
+                            <li><a href="contact-page.html">Contact Us</a></li>
+                        </ul>
+                    </nav><!-- / #primary-nav -->
+                </div>
+            </div>
+        </header>
+    </div>
+
+    <div class="banner">
+        <div class="container-fluid">
+            <div class="col-md-5 col-sm-5 col-xs-12">
+                <div class="left-content">
+                    <div class="inside-content">
+                        <h4>A smart energy management system for MANIT.</h4>
+                        <div class="white-border-button">
+                            <a href="#">View More</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-2 col-sm-2 col-xs-12">
+                <div class="center-image">
+                    <div class="inside-content">
+                        <img src="img/center-image.png" alt="">
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-5 col-sm-5 col-xs-12">
+                <div class="right-content">
+                    <div class="owl-carousel owl-theme">
+                        <div class="item">
+                            <p>“Phasellus in nulla non ante tempor maximus. Mauris bibendum augue vel neque maximus, eget venenatis neque condimentum. Quisque suscipit porta finibus. Mauris volutpat commodo mattis.”</p>
+                        </div>
+                        <div class="item">
+                            <p>“Vestibulum posuere iaculis diam, in faucibus urna. Duis nisl tellus, gravida in lacinia consequat, aliquet ac ligula. Etiam bibendum ligula a nunc malesuada, non congue tortor porttitor.”</p>
+                        </div>
+                        <div class="item">
+                            <p>“Nullam sit amet sapien libero. Nulla arcu elit, auctor a odio nec, ultrices ultricies felis. Quisque pretium tempor odio, ut consectetur lectus semper a.”</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="container">
+        <div class="total-consumption {% if total_consumption > 4000 %}high-consumption{% else %}low-consumption{% endif %}">
+            Total Energy Consumption: {{ total_consumption }} kWh
+        </div>
+
+        <div class="chart-container">
+            <!-- Energy Consumption Pie Chart -->
+            <div class="chart-card">
+                <h3>Energy Consumption by Area</h3>
+                <canvas id="energyConsumptionChart"></canvas>
+            </div>
+
+            <!-- Renewable Energy Pie Chart -->
+            <div class="chart-card">
+                <h3>Renewable Energy Usage</h3>
+                <canvas id="renewableEnergyChart"></canvas>
+            </div>
+        </div>
+
+        <!-- Energy Transfer Suggestions -->
+        {% if suggestions %}
+            <div class="suggestions">
+                <h3>Energy Transfer Suggestions:</h3>
+                <ul>
+                    {% for suggestion in suggestions %}
+                        <li>{{ suggestion }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        {% endif %}
+    </div>
+
+
+    <div class="left-right-image">
+        <div class="container">
+            <div class="col-md-8 col-md-offset-2">
+                <div class="right-image">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h2 class="hidden-sm hidden-xs">Donec pulvinar quis tortor <br>aliquam tincidunt</h2>
+                            <h2 class="hidden-lg hidden-md">Donec pulvinar quis tortor aliquam tincidunt</h2>
+                            <span>Suspendisse faucibus ornare purus</span>
+                            <p>Morbi quam dui, scelerisque cursus nisl et, placerat congue mi. Proin odio massa, tempor id odio eget, mollis molestie dui. Cras elementum mollis nisi, dapibus sagittis leo pretium nec.</p> <br />
+                            <p>Aenean lobortis magna purus, quis blandit eros dictum at. Fusce gravida ligula non neque tempor congue. Vivamus efficitur eget nulla vel lacinia.</p>
+                            <div class="blue-border-button">
+                                <a href="#">View More</a>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="image">
+                                <img src="img/right-image-post.png" alt="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="left-image">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="image">
+                                <img src="img/left-image-post.png" alt="">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <h2 class="hidden-sm hidden-xs">Aliquam luctus convallis <br>tortor in cursus</h2>
+                            <h2 class="hidden-lg hidden-md">Aliquam luctus convallis tortor in cursus</h2>
+                            <span>Lorem ipsum dolor sit amet</span>
+                            <p>Nulla elementum, purus at cursus sollicitudin, dolor est fermentum justo, vel iaculis nibh lectus non elit. Cras bibendum felis tincidunt mauris tincidunt facilisis. Aenean porttitor lectus quis nulla laoreet, eget pulvinar leo ultricies.</p> <br />
+                            <p>Mauris tristique tempus dapibus. Nulla quis risus euismod, imperdiet nisl sed, mattis magna. Nunc sed malesuada purus. Quisque urna nunc, lacinia vel ipsum tristique, finibus sollicitudin massa.</p>
+                            <div class="blue-border-button">
+                                <a href="#">View More</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+
+
+    <div class="sub-footer">
+        <div class="container">
+            <div class="col-md-12">
+                <p>Copyright &copy; 2018 Company Name
+
+                - Design: <a rel="nofollow" href="https://www.facebook.com/tooplate">Tooplate</a></p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const energyData = JSON.parse('{{ energy_data_json | escapejs }}');
+        const renewableData = JSON.parse('{{ renewable_data_json | escapejs }}');
+
+        // Energy Consumption Pie Chart
+        const ctx1 = document.getElementById('energyConsumptionChart').getContext('2d');
+        new Chart(ctx1, {
+            type: 'pie',
+            data: {
+                labels: ['Hostels', 'Academic Buildings', 'Research Labs', 'Common Areas'],
+                datasets: [{
+                    label: 'Energy Consumption (kWh)',
+                    data: [
+                        energyData.hostels,
+                        energyData.academic_buildings,
+                        energyData.research_labs,
+                        energyData.common_areas
+                    ],
+                    backgroundColor: ['#ff9999', '#66b3ff', '#99ff99', '#ffcc99'],
+                    borderColor: ['#ff6666', '#3399ff', '#66cc66', '#ff9966'],
+                    borderWidth: 1
+                }]
+            }
+        });
+
+        // Renewable Energy Pie Chart
+        const ctx2 = document.getElementById('renewableEnergyChart').getContext('2d');
+        new Chart(ctx2, {
+            type: 'pie',
+            data: {
+                labels: ['Solar', 'Wind'],
+                datasets: [{
+                    label: 'Renewable Energy (kWh)',
+                    data: [renewableData.solar, renewableData.wind],
+                    backgroundColor: ['#ffcc00', '#00ccff'],
+                    borderColor: ['#ff9900', '#0099cc'],
+                    borderWidth: 1
+                }]
+            }
+        });
+    </script>
+
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="../static/js/vendor/jquery-1.11.2.min.js"><\/script>')</script>
+
+    <script src="../static/js/vendor/bootstrap.min.js"></script>
+
+    <script src="../static/js/datepicker.js"></script>
+    <script src="../static/js/plugins.js"></script>
+    <script src="../static/js/main.js"></script>
+</body>
+</html>

@@ -71,6 +71,7 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'version_beta.wsgi.application'
+SESSION_ENGINE = 'django.contrib.sessions.backends.db'
 
 
 # Database
