@@ -16,7 +16,7 @@
         {#}#}
 
         header {
-            background-color: #040943;
+            background-color: #FFB266 ;
             color: white;
             padding: 10px 20px;
             text-align: center;
@@ -86,7 +86,7 @@
         }
 
         .total-consumption {
-            background-color: #66b3ff;
+            background-color: #FFB266 ;
             padding: 15px;
             color: white;
             font-weight: bold;
@@ -127,20 +127,19 @@
                 <div class="col-md-12">
                     <button id="primary-nav-button" type="button">Menu</button>
                     <div class="logo">
-                        <a href="index.html"><img src="img/white-logo.png" alt="Photon"></a>
+                        <a href="index.html"><img src="../static/img/logo.png" alt="Photon"></a>
                     </div>
                     <nav id="primary-nav" class="dropdown cf">
                         <ul class="dropdown menu">
-                            <li class='active'><a href="index.html">Main Features</a></li>
-                            <li><a href="#">Products</a>
+                            <li class='active'><a href="index.html">Energy Analytics</a></li>
+                            <li><a href="#">Dashboard</a>
                                 <ul class="sub-menu">
-                                    <li><a href="generic-page.html">Latest Products</a></li>
-                                    <li><a href="generic-page.html">New Arrivals</a></li>
-                                    <li><a href="generic-page.html">Top Rated 2019</a></li>
-                                    <li><a href="generic-page.html">Recommended</a></li>
+                                    <li><a href="generic-page.html">Dashboard</a></li>
+                                    <li><a href="generic-page.html">Support & FAQs</a></li>
+                                    <li><a href="generic-page.html">About</a></li>
                                 </ul>
                             </li>
-                            <li><a href="generic-page.html">Shop</a></li>
+                            <li><a href="generic-page.html">Recommendations</a></li>
                             <li><a href="contact-page.html">Contact Us</a></li>
                         </ul>
                     </nav><!-- / #primary-nav -->
@@ -172,13 +171,13 @@
                 <div class="right-content">
                     <div class="owl-carousel owl-theme">
                         <div class="item">
-                            <p>“Phasellus in nulla non ante tempor maximus. Mauris bibendum augue vel neque maximus, eget venenatis neque condimentum. Quisque suscipit porta finibus. Mauris volutpat commodo mattis.”</p>
+                            <p>“We cannot solve our problems with the same thinking we used when we created them.”</p>
                         </div>
                         <div class="item">
-                            <p>“Vestibulum posuere iaculis diam, in faucibus urna. Duis nisl tellus, gravida in lacinia consequat, aliquet ac ligula. Etiam bibendum ligula a nunc malesuada, non congue tortor porttitor.”</p>
+                            <p>“Smart energy management isn’t just about reducing costs; it’s about creating a cleaner, greener future.”</p>
                         </div>
                         <div class="item">
-                            <p>“Nullam sit amet sapien libero. Nulla arcu elit, auctor a odio nec, ultrices ultricies felis. Quisque pretium tempor odio, ut consectetur lectus semper a.”</p>
+                            <p>“Efficiency is the first step towards sustainability”</p>
                         </div>
                     </div>
                 </div>
@@ -227,18 +226,17 @@
                 <div class="right-image">
                     <div class="row">
                         <div class="col-md-6">
-                            <h2 class="hidden-sm hidden-xs">Solar Power Requirement <br>Based on Area</h2>
-                            <h2 class="hidden-lg hidden-md">Donec pulvinar quis tortor aliquam tincidunt</h2>
-                            <span>Suspendisse faucibus ornare purus</span>
-                            <p>Morbi quam dui, scelerisque cursus nisl et, placerat congue mi. Proin odio massa, tempor id odio eget, mollis molestie dui. Cras elementum mollis nisi, dapibus sagittis leo pretium nec.</p> <br />
-                            <p>Aenean lobortis magna purus, quis blandit eros dictum at. Fusce gravida ligula non neque tempor congue. Vivamus efficitur eget nulla vel lacinia.</p>
+                            <h2 class="hidden-sm hidden-xs">Predict Building Energy Loads</span><br><br>
+                            <h4>Calculate Heating & Cooling Loads</h4> <br />
+                            <p>Enter your building’s physical features—like size, insulation type, and window area—to predict the energy needed for heating and cooling. This feature provides a tailored estimate, helping you understand energy demands, pinpoint areas for potential savings, and optimize consumption for a more efficient, sustainable space.</p> <br />
                             <div class="blue-border-button">
-                                <a href="#">View More</a>
+                                <a href="/predict_view/" target="_blank">Visit</a>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="image">
-                                <img src="../static/img/ai-chat.png" alt="">
+                                {% comment %} <img src="../static/img/ai-chat.png" alt=""> {% endcomment %}
+                                <div style="width:100%;height:0;padding-bottom:100%;position:relative;"><iframe src="https://giphy.com/embed/j3spUwkmgYwROZurte" width="100%" height="100%" style="position:absolute" frameBorder="0" class="giphy-embed" allowFullScreen></iframe></div><p><a href="https://giphy.com/gifs/j3spUwkmgYwROZurte">via GIPHY</a></p>
                             </div>
                         </div>
                     </div>
@@ -247,17 +245,18 @@
                     <div class="row">
                         <div class="col-md-6">
                             <div class="image">
-                                <img src="../static/img/ai-chat.png" alt="">
+                                {% comment %} <img src="../static/img/ai-chat.png" alt=""> {% endcomment %}
+                                <div style="width:100%;height:0;padding-bottom:100%;position:relative;"><iframe src="https://giphy.com/embed/mmNDRapoi619wTCfj5" width="100%" height="100%" style="position:absolute" frameBorder="0" class="giphy-embed" allowFullScreen></iframe></div><p><a href="https://giphy.com/gifs/EDFOfficiel-sun-soleil-edf-mmNDRapoi619wTCfj5">via GIPHY</a></p>
                             </div>
                         </div>
                         <div class="col-md-6">
-                            <h2 class="hidden-sm hidden-xs">Custom AI Companion <br>for personalized energy needs</h2>
-                            <h2 class="hidden-lg hidden-md">Aliquam luctus convallis tortor in cursus</h2>
-                            <span>Lorem ipsum dolor sit amet</span>
-                            <p>Nulla elementum, purus at cursus sollicitudin, dolor est fermentum justo, vel iaculis nibh lectus non elit. Cras bibendum felis tincidunt mauris tincidunt facilisis. Aenean porttitor lectus quis nulla laoreet, eget pulvinar leo ultricies.</p> <br />
-                            <p>Mauris tristique tempus dapibus. Nulla quis risus euismod, imperdiet nisl sed, mattis magna. Nunc sed malesuada purus. Quisque urna nunc, lacinia vel ipsum tristique, finibus sollicitudin massa.</p>
+                            <h2 class="hidden-sm hidden-xs">Solar Panel Calculator</h2><br>
+                            <h2 class="hidden-lg hidden-md">
+                            </h2>
+                            <h4>Maximize Your Renewable Energy</h4> <br />
+                            <p>Use our Solar Panel Calculator to find the optimal number of solar panels for your space, based on factors like roof size, sunlight exposure, and energy needs. Maximize solar power, lower your energy bills, and reduce dependence on the grid for a more sustainable future.</p> <br />
                             <div class="blue-border-button">
-                                <a href="#">View More</a>
+                                <a href="/solarbill/" target="_blank">Visit</a>
                             </div>
                         </div>
                     </div>
@@ -269,18 +268,17 @@
                 <div class="right-image">
                     <div class="row">
                         <div class="col-md-6">
-                            <h2 class="hidden-sm hidden-xs">Heat And Cold Load <br>Based On Room Area</h2>
-                            <h2 class="hidden-lg hidden-md">Donec pulvinar quis tortor aliquam tincidunt</h2>
-                            <span>Suspendisse faucibus ornare purus</span>
-                            <p>Morbi quam dui, scelerisque cursus nisl et, placerat congue mi. Proin odio massa, tempor id odio eget, mollis molestie dui. Cras elementum mollis nisi, dapibus sagittis leo pretium nec.</p> <br />
-                            <p>Aenean lobortis magna purus, quis blandit eros dictum at. Fusce gravida ligula non neque tempor congue. Vivamus efficitur eget nulla vel lacinia.</p>
+                            <h2 class="hidden-sm hidden-xs">Chat with Photon AI</h2> <br>
+                            <h4>Your Energy Assistant</h4> <br />
+                            <p>Got questions or need assistance? Chat with Photon AI, our smart chatbot built to tackle all your energy-related inquiries. Whether you’re looking for tips on energy efficiency, troubleshooting advice, or guidance on optimizing energy use, Photon AI provides real-time solutions to help you make informed decisions effortlessly.</p>
                             <div class="blue-border-button">
-                                <a href="#">View More</a>
+                                <a href="/gen/" target="_blank">Visit</a>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="image">
-                                <img src="../static/img/ai-chat.png" alt="">
+                                {% comment %} <img src="../static/img/ai-chat.png" alt=""> {% endcomment %}
+                                <div style="width:100%;height:0;padding-bottom:75%;position:relative;"><iframe src="https://giphy.com/embed/26FPJGjhefSJuaRhu" width="100%" height="100%" style="position:absolute" frameBorder="0" class="giphy-embed" allowFullScreen></iframe></div><p><a href="https://giphy.com/gifs/chat-conversation-gifathon-26FPJGjhefSJuaRhu">via GIPHY</a></p>
                             </div>
                         </div>
                     </div>
@@ -295,9 +293,9 @@
     <div class="sub-footer">
         <div class="container">
             <div class="col-md-12">
-                <p>Copyright &copy; 2018 Company Name
+                <p>Copyright &copy; 2024 Beta01
 
-                - Design: <a rel="nofollow" href="https://www.facebook.com/tooplate">Tooplate</a></p>
+              </p>
             </div>
         </div>
     </div>
