@@ -11,6 +11,7 @@ import google.generativeai as genai
 import joblib
 import os
 import random
+from version_beta import settings
 
 def index(request):
 
@@ -190,7 +191,9 @@ def predict_view(request):
 
 
 
-genai.configure(api_key="AIzaSyDf0yzxpzP50h5FPs0zI72waHoEY7mKvL4")
+genai.configure(api_key=settings.api_key)
+
+
 
 @csrf_exempt
 def gen(request):
