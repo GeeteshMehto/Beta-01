@@ -171,9 +171,9 @@
     </select>
 
     <label>Quantity</label>
-    <input type="number" id="quantity" placeholder="Number of appliances" min="1" max="50">
+    <input type="number" id="quantity" placeholder="Number of appliances" min="1" max="50" >
 
-    <label>Usage Hours per Day</label>
+    <label>Daily Consumption</label>
     <input type="number" id="usage_hours" placeholder="Hours per day" min="0" max="24" step="0.5" >
 
     <button type="button" class="add-button" onclick="addAppliance()">Add Appliance</button>
@@ -214,6 +214,12 @@
     const quantity = parseInt(document.getElementById('quantity').value);
     const usageHours = parseFloat(document.getElementById('usage_hours').value);
 
+    // Check if all fields are filled
+    if (!appliance || isNaN(quantity) || isNaN(usageHours)) {
+      alert("Please fill out all fields before adding the appliance.");
+      return;
+    }
+
     // Store appliance data
     applianceList.push({ appliance, quantity, usageHours });
 
@@ -252,6 +258,12 @@
 
   document.getElementById('solarCalculatorForm').addEventListener('submit', function(event) {
     event.preventDefault();
+
+    // Check if any appliances have been added
+    if (applianceList.length === 0) {
+      alert("Please add at least one appliance before calculating.");
+      return;
+    }
 
     const city = document.getElementById('city').value.trim();
     let totalPower = 0;
