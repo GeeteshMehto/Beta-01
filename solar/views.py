@@ -182,8 +182,8 @@ def predict_view(request):
         return JsonResponse({
             'heating_load': round(heating_load, 2),
             'cooling_load': round(cooling_load, 2),
-            'fan_hours': round(fan_hours, 2)*24,
-            'ac_hours': round(ac_hours, 2)*24
+            'fan_hours': round(fan_hours*24, 2),
+            'ac_hours': round(ac_hours*24, 2)
         })
 
     return render(request, 'room.html', {'heating_load': heating_load, 'cooling_load': cooling_load})
