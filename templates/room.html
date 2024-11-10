@@ -197,6 +197,8 @@
             <h2>Prediction Results</h2>
             <p id="heating-load"></p>
             <p id="cooling-load"></p>
+            <p id="fan-hours"></p>
+            <p id="ac-hours"></p>
             <button class="close-btn" onclick="closeModal()">Close</button>
         </div>
     </div>
@@ -219,6 +221,8 @@
                 // Display the result in the modal
                 document.getElementById('heating-load').textContent = "Predicted Heating Load: " + data.heating_load + " kWh";
                 document.getElementById('cooling-load').textContent = "Predicted Cooling Load: " + data.cooling_load + " kWh";
+                document.getElementById('fan-hours').textContent = "Fan usage time required: " + data.fan_hours + " hours";
+                document.getElementById('ac-hours').textContent = "AC usage time required: " + data.ac_hours + " hours";
                 document.getElementById('prediction-modal').style.display = 'flex';
             })
             .catch(error => console.error('Error:', error));

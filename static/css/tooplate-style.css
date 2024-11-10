@@ -762,7 +762,7 @@ a.active:after {
   background: #517df0; /* Old browsers */
   background: -moz-linear-gradient(left, #517df0 50%, #eeeeee 50%); /* FF3.6-15 */
   background: -webkit-linear-gradient(left, #517df0 50%,#eeeeee 50%); /* Chrome10-25,Safari5.1-6 */
-  background: #dfc246; /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  background: linear-gradient(to right, #517df0 50%,#eeeeee 50%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#517df0', endColorstr='#eeeeee',GradientType=1 ); /* IE6-9 */
   }
 

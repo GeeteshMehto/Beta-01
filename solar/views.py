@@ -125,9 +125,38 @@ def predict_loads(X1, X2, X3, X4, X5, X6, X7, X8):
 
 
 # View for handling form submission
+# def predict_view(request):
+#     heating_load = None
+#     cooling_load = None
+#     if request.method == 'POST':
+#         # Get form data
+#         X1 = float(request.POST.get("X1"))
+#         X2 = float(request.POST.get("X2"))
+#         X3 = float(request.POST.get("X3"))
+#         X4 = float(request.POST.get("X4"))
+#         X5 = float(request.POST.get("X5"))
+#         X6 = float(request.POST.get("X6"))
+#         X7 = float(request.POST.get("X7"))
+#         X8 = float(request.POST.get("X8"))
+#
+#         # Call the prediction function
+#         heating_load, cooling_load = predict_loads(X1, X2, X3, X4, X5, X6, X7, X8)
+#
+#         heating_load = float(heating_load)
+#         cooling_load = float(cooling_load)
+#
+#         # Return the result as a JSON response (to trigger modal with prediction)
+#         return JsonResponse({'heating_load': heating_load, 'cooling_load': cooling_load})
+#
+#     return render(request, 'room.html', {'heating_load': heating_load, 'cooling_load': cooling_load})
+
+
 def predict_view(request):
     heating_load = None
     cooling_load = None
+    fan_hours = None
+    ac_hours = None
+
     if request.method == 'POST':
         # Get form data
         X1 = float(request.POST.get("X1"))
@@ -145,10 +174,20 @@ def predict_view(request):
         heating_load = float(heating_load)
         cooling_load = float(cooling_load)
 
+        # Example logic to determine device usage times based on load
+        fan_hours = cooling_load / 100  # Sample calculation for fan time
+        ac_hours = cooling_load / 500   # Sample calculation for AC time
+
         # Return the result as a JSON response (to trigger modal with prediction)
-        return JsonResponse({'heating_load': heating_load, 'cooling_load': cooling_load})
+        return JsonResponse({
+            'heating_load': round(heating_load, 2),
+            'cooling_load': round(cooling_load, 2),
+            'fan_hours': round(fan_hours, 2)*24,
+            'ac_hours': round(ac_hours, 2)*24
+        })
 
     return render(request, 'room.html', {'heating_load': heating_load, 'cooling_load': cooling_load})
+
 
 
 genai.configure(api_key="AIzaSyDf0yzxpzP50h5FPs0zI72waHoEY7mKvL4")
