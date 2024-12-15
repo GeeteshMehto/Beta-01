@@ -70,7 +70,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'version_beta.wsgi.application'
+WSGI_APPLICATION = 'version_beta.wsgi.app'
 SESSION_ENGINE = 'django.contrib.sessions.backends.db'
 
 
