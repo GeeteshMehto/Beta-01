@@ -15,12 +15,6 @@ from version_beta import settings
 
 def index(request):
 
-
-    # Set an environment variable
-    # Get the value of an environment variable
-    value = os.getenv("api_key")
-    print(value)  # Output: some_value
-
     return render(request, 'index.html')
 
 
